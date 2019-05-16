@@ -26,6 +26,7 @@ public class SetResolution : MonoBehaviour {
     void Start()
     {
         configText = this.gameObject.GetComponent<Text>();
+        Screen.SetResolution(resolutions[select, 0], resolutions[select, 1], true);
     }
 
     void Update()

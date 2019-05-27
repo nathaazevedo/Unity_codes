@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using GooglePlayGames;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms;
 

@@ -10,7 +10,7 @@ using UnityEngine.SocialPlatforms;
 public class SplashScreen : MonoBehaviour {
 
   public float duracao = 2;
-  public String cena = "Menu"
+  public String cena = "Menu";
   private float tempo = 0;
   
   void Start(){

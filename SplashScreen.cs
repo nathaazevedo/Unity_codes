@@ -12,7 +12,11 @@ public class SplashScreen : MonoBehaviour {
   public float duracao = 2;
   public String cena = "Menu"
   private float tempo = 0;
-    
+  
+  void Start(){
+//	Screen.SetResolution(1024, 768, true);	  
+  }
+	
   void Update () {
     tempo += 1 * Time.deltaTime;
 		if (tempo >= duracao){

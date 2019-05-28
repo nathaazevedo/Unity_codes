@@ -22,9 +22,11 @@ public class SetResolution : MonoBehaviour {
     //=======================================
     private Text configText;
     private int select = 0;
+    private int maxIndex;
 
     void Start()
     {
+        maxIndex = (resolutions.Length/resolutions.Rank)-1; // Neste caso, 16/2 = 8 que é o numero de solucoes disponiveis
         configText = this.gameObject.GetComponent<Text>();
         Screen.SetResolution(resolutions[select, 0], resolutions[select, 1], true);
     }
@@ -33,7 +35,7 @@ public class SetResolution : MonoBehaviour {
     {
         configText.text = "Set resolution: " + resolutions[ select, 0] + " x " + resolutions[ select, 1];
 
-        if (Input.GetKeyDown("right") && select < (resolutions.Length/resolutions.Rank)-1) // Neste caso, 16/2 = 8 que é o numero de solucoes disponiveis
+        if (Input.GetKeyDown("right") && select < maxIndex) 
         {
             select++;
         }
@@ -44,8 +46,7 @@ public class SetResolution : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Return)) {
             Screen.SetResolution(resolutions[ select, 0], resolutions[ select, 1], true);
-        } else if (Input.GetKeyDown(KeyCode.Escape))
-        {
+        } else if (Input.GetKeyDown(KeyCode.Escape)){
             SceneManager.LoadScene("Game");
         }
     }

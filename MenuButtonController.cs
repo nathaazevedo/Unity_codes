@@ -21,34 +21,26 @@ public class MenuButtonController : MonoBehaviour{
     ColorBlock colorVar;
 
     void Start(){
-        maxIndex = _button.Length; // nº max de opcoes é igual ao nº max de botoes
+        maxIndex = _button.Length-1; // n� max de opcoes � igual ao n� max de botoes
         colorVar = _button[index].colors;                 // pegar opcoes de cores do botao
         colorVar.normalColor = colorVar.highlightedColor; // mostrar que esta selecionado
         _button[index].colors = colorVar;                 // setar cor
     }
 
     void Update(){
-        /*
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            Debug.Log("teste");
-            // trocar o index para o bottao q o mouse esta
-        }
-        */
         // Move
-        if (Input.GetAxis("Vertical") != 0) {
+        if (Input.GetAxis("Vertical") != 0){
             colorVar = _button[index].colors;
             colorVar.normalColor = new Color(1, 1, 1);
             _button[index].colors = colorVar;
-            if (!buttonSelected) {
-                if (Input.GetAxis("Vertical") < 0) {
-                    if (index < maxIndex) {
+                if (!buttonSelected){
+                if (Input.GetAxis("Vertical") < 0){
+                    if (index < maxIndex){
                         index++;
                     } else {
                         index = 0;
                     }
-                }
-                else if (Input.GetAxis("Vertical") > 0){
+                } else if (Input.GetAxis("Vertical") > 0) {
                     if (index > 0) {
                         index--;
                     } else {
@@ -57,18 +49,27 @@ public class MenuButtonController : MonoBehaviour{
                 }
                 buttonSelected = true;
             }
-            colorVar.normalColor = colorVar.highlightedColor;
-            _button[index].colors = colorVar;
         } else {
             buttonSelected = false;
         }
-
-        if (Input.GetKeyDown(KeyCode.Return)){
+        if (Input.GetKeyDown(KeyCode.Return)) {
             _button[index].onClick.Invoke();
+        }
+        // Mouse Over
+        if (EventSystem.current.IsPointerOverGameObject()){
+            EventSystem eventSystem = EventSystem.current;
+        //    Debug.Log(eventSystem.currentSelectedGameObject); // retorna o que foi clicado
+            colorVar = _button[index].colors;
+            colorVar.normalColor = new Color(1, 1, 1);
+            _button[index].colors = colorVar;
+        } else {
+            // Selected
+            colorVar.normalColor = colorVar.highlightedColor;
+            _button[index].colors = colorVar;
         }
     }
 
-    private void OnDisable(){
+    private void OnDisable() {
         buttonSelected = false;
     }
 

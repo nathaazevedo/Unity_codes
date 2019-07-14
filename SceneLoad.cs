@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 public class SceneLoad : MonoBehaviour
 {
 
-    public Object loadScene;
+    public string loadScene;
     // Update is called once per frame
     void OnMouseUp()
     {
-        SceneManager.LoadScene(loadScene.name);
+        SceneManager.LoadScene(loadScene);
     }
 }

@@ -8,7 +8,7 @@ public class SplashScreen : MonoBehaviour
 {
 
     public float duracao = 2;
-    public Object loadScene;
+    public string loadScene;
     private float tempo = 0;
 
     void Start()
@@ -21,7 +21,7 @@ public class SplashScreen : MonoBehaviour
         tempo += 1 * Time.deltaTime;
         if (tempo >= duracao)
         {
-            SceneManager.LoadScene(loadScene.name);
+            SceneManager.LoadScene(loadScene);
         }
     }
 
